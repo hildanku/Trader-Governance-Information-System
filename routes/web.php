@@ -19,18 +19,20 @@ Route::get('/', function () {
 });
 
 // Route::get('/login', [App\Http\Controllers\AuthController::class, 'index'])->name('login');
-Route::get('/login', [AuthController::class, 'index'])->name('login');
-Route::post('/login', [AuthController::class, 'loginProcess']);
+Route::get('/operator/login', [AuthController::class, 'index'])->name('login');
+Route::post('/operator/login', [AuthController::class, 'loginProcess']);
 
 // Route::get('/register', [AuthController::class, 'register']);
 // Route::post('/register', [AuthController::class, 'registerProcess']);
 
-Route::get('/logout', [AuthController::class, 'logout']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/trader/login', [UserAuthController::class, 'index']);
+Route::get('/trader/login', [UserAuthController::class, 'index'])->name('trader.login');
 Route::post('/trader/login', [UserAuthController::class, 'loginProcess'])->name('trader.login.process');;
 
+Route::get('/trader/register', [UserAuthController::class, 'register'])->name('trader.register');
+Route::post('/trader/register', [UserAuthController::class, 'registerProcess'])->name('trader.register.process');
 
-// Route::get('/register/users', [UserAuthController::class, 'register']);
-// Route::post('/register/users', [UserAuthController::class, 'registerProcess']);
-// Route::get('/logout', [UserAuthController::class, 'logout']);
+// route for operator
+
+Route::view('/dashboard', 'operators.dashboard');
