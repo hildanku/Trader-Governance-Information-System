@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\Operators\DashboardController;
-
+use App\Http\Controllers\Operators\UserManagementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,3 +36,6 @@ Route::get('/trader/register', [UserAuthController::class, 'register'])->name('t
 Route::post('/trader/register', [UserAuthController::class, 'registerProcess'])->name('trader.register.process');
 
 Route::get('/operator/dashboard', [DashboardController::class, 'index'])->name('trader.dashboard');
+
+// Users Management
+Route::get('/operator/users', [UserManagementController::class, 'index'])->name('operator.users');

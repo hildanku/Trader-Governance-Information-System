@@ -16,9 +16,9 @@
                 </a>
             </li>
             <li class="sidebar-item  ">
-                <a href="/register" class='sidebar-link'>
+                <a href="/operator/users" class='sidebar-link'>
                     <i data-feather="users" width="20"></i> 
-                    <span>Registrasi</span>
+                    <span>Users Management</span>
                 </a>
             </li>
             <li class="sidebar-item  ">
