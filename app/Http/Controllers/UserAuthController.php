@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
-use App\Models\UserCredential;
+use Illuminate\Support\Facades\DB;
 
 class UserAuthController extends Controller
 {
@@ -15,6 +15,7 @@ class UserAuthController extends Controller
     {
         return view('Auth.trader');
     }
+
     public function loginProcess(Request $request)
     {
         $credentials = $request->validate([
@@ -26,6 +27,31 @@ class UserAuthController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('trader/dashboard');
         }
+
         return Redirect::back()->with('error', 'Username atau Password salah');
+    }
+
+    public function register()
+    {
+        return view('Auth.traderRegister');
+    }
+
+    public function registerProcess(Request $request)
+    {
+        $request->validate([
+            'fullname' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:usercredentials'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:usercredentials'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        DB::table('usercredentials')->insert([
+            'fullname' => $request->fullname,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        
+        return Redirect::route('trader.dashboard')->with('success', 'Registrasi Berhasil!');
     }
 }
