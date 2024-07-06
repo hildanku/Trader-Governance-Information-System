@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\Operators\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +35,4 @@ Route::post('/trader/login', [UserAuthController::class, 'loginProcess'])->name(
 Route::get('/trader/register', [UserAuthController::class, 'register'])->name('trader.register');
 Route::post('/trader/register', [UserAuthController::class, 'registerProcess'])->name('trader.register.process');
 
-// route for operator
-
-Route::view('/dashboard', 'operators.dashboard');
+Route::get('/operator/dashboard', [DashboardController::class, 'index'])->name('trader.dashboard');
