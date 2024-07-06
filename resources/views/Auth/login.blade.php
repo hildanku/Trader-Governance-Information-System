@@ -22,6 +22,11 @@
                     <div class="text-center mb-5">
                         <img src="_voler/dist/assets/images/logoecv.png" height="48" class=''>
                         <p>Please login to continwue to ECVolunteers.</p>
+                        @if(session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
                     </div>
 
 					<form action="{{ route('login') }}" method="post">
