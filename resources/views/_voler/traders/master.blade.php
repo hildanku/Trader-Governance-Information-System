@@ -1,6 +1,6 @@
-@include('_voler.operators.header')
-@include('_voler.operators.navbar')
+@include('_voler.traders.header')
+@include('_voler.traders.navbar')
 
 @yield('content')
 
-@include('_voler.operators.footer')
+@include('_voler.traders.footer')
