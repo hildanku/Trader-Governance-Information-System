@@ -6,6 +6,8 @@ use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\Operators\DashboardController as OperatorDashboardController;
 use App\Http\Controllers\Operators\UserManagementController;
 use App\Http\Controllers\Operators\AreaManagementController;
+use App\Http\Controllers\Operators\LocationManagementController;
+
 use App\Http\Controllers\Traders\DashboardController as TraderDashboardController;
 use App\Http\Controllers\Traders\UserDetailController;
 
@@ -21,7 +23,7 @@ use App\Http\Controllers\Traders\UserDetailController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 // Route::get('/login', [App\Http\Controllers\AuthController::class, 'index'])->name('login');
@@ -72,4 +74,14 @@ Route::middleware(['LoginCheck'])->group(function () {
     Route::post('/operator/user/update/{userId}', [UserManagementController::class, 'update'])->name('operator.users.update');
     Route::post('operator/user/destroy/{userId}', [UserManagementController::class, 'destroy'])->name('operator.users.destroy');
     // End Users
+
+    // Locations
+   
+    Route::get('/operator/locations', [LocationManagementController::class, 'index'])->name('operator.locations');
+    Route::get('/operator/location/create', [LocationManagementController::class, 'create'])->name('operator.locations.create');
+    Route::post('/operator/location/store', [LocationManagementController::class, 'store'])->name('operator.locations.store');
+    Route::get('/operator/location/edit/{locationId}', [LocationManagementController::class, 'edit'])->name('operator.locations.edit');
+    Route::post('/operator/location/update/{locationId}', [LocationManagementController::class, 'update'])->name('operator.locations.update');
+    Route::post('operator/location/destroy/{locationId}', [LocationManagementController::class, 'destroy'])->name('operator.locations.destroy');
+    // End Locations
 });
