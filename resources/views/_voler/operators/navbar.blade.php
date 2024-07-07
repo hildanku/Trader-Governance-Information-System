@@ -4,13 +4,13 @@
             <div class="sidebar-wrapper active">
     <div class="sidebar-header">
        <!--- <img src="/front/dist/assets/images/logo.svg" alt="" srcset=""> -->
-        <a href="/"><h4>SISTEM TATA KELOLA PEDAGANG</h4></a>
+        <a href="/"><h4 style="font-weight: bold">Trade Governance Information System</h4></a>
     </div>
     <div class="sidebar-menu">
         <ul class="menu">
             <li class='sidebar-title'>Menu Utama</li>
             <li class="sidebar-item active ">
-                <a href="index.html" class='sidebar-link'>
+                <a href="/operator/dashboard" class='sidebar-link'>
                     <i data-feather="home" width="20"></i> 
                     <span>Dashboard</span>
                 </a>
@@ -22,9 +22,15 @@
                 </a>
             </li>
             <li class="sidebar-item  ">
-                <a href="/lapak" class='sidebar-link'>
-                    <i data-feather="maps" width="20"></i> 
-                    <span>Ketersediaan Lapak</span>
+                <a href="/operator/areas" class='sidebar-link'>
+                    <i data-feather="map" width="20"></i> 
+                    <span>Areas Management</span>
+                </a>
+            </li>
+            <li class="sidebar-item  ">
+                <a href="/operator/locations" class='sidebar-link'>
+                    <i data-feather="map-pin" width="20"></i> 
+                    <span>Location Management</span>
                 </a>
             </li>
         </ul>
