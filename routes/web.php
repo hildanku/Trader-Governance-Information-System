@@ -38,8 +38,13 @@ Route::post('/trader/login', [UserAuthController::class, 'loginProcess'])->name(
 Route::get('/trader/register', [UserAuthController::class, 'register'])->name('trader.register');
 Route::post('/trader/register', [UserAuthController::class, 'registerProcess'])->name('trader.register.process');
 
-Route::get('/trader/dashboard', [TraderDashboardController::class, 'index'])->name('trader.dashboard');
-Route::get('/trader/profile', [UserDetailController::class, 'index'])->name('trader.profile');
+
+Route::view('/home', 'home')->name('home');
+
+Route::middleware(['LoginCheck'])->group(function () {
+    Route::get('/trader/dashboard', [TraderDashboardController::class, 'index'])->name('trader.dashboard');
+    Route::get('/trader/profile', [UserDetailController::class, 'index'])->name('trader.profile');
+});
 
 Route::get('/operator/dashboard', [OperatorDashboardController::class, 'index'])->name('trader.dashboard');
 Route::get('/operator/users', [UserManagementController::class, 'index'])->name('operator.users');
