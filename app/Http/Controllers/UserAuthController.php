@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+// use App\Models\UserCredential;
 
 class UserAuthController extends Controller
 {
@@ -45,13 +46,27 @@ class UserAuthController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        DB::table('usercredentials')->insert([
+        // DB::table('usercredentials')->insert([
+        //     'fullname' => $request->fullname,
+        //     'username' => $request->username,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ]);
+
+        // https://laravel.com/docs/11.x/queries#auto-incrementing-ids
+        $userId = DB::table('usercredentials')->insertGetId([
             'fullname' => $request->fullname,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        
+
+        DB::table('userdetails')->insert([
+            'userId' => $userId,
+            'gender' => $request->gender ?? null,
+            'address' => $request->address ?? null,
+            'homePhoneNumber' => $request->homePhoneNumber ?? null,
+        ]);
         return Redirect::route('trader.dashboard')->with('success', 'Registrasi Berhasil!');
     }
 }
