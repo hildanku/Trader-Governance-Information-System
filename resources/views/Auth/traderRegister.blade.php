@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="auth-login.html">Have an account? Login</a>
+                                <a href="{{ route('trader.login') }}">Have an account? Login</a>
                                 <div class="clearfix">
                                     <button class="btn btn-primary float-end">Submit</button>
                                 </div>
