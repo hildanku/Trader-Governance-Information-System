@@ -5,6 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\Operators\DashboardController;
 use App\Http\Controllers\Operators\UserManagementController;
+use App\Http\Controllers\Traders\DashboardController;
+use App\Http\Controllers\Traders\UserDetailController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +38,8 @@ Route::post('/trader/login', [UserAuthController::class, 'loginProcess'])->name(
 Route::get('/trader/register', [UserAuthController::class, 'register'])->name('trader.register');
 Route::post('/trader/register', [UserAuthController::class, 'registerProcess'])->name('trader.register.process');
 
-Route::get('/operator/dashboard', [DashboardController::class, 'index'])->name('trader.dashboard');
+Route::get('/trader/dashboard', [DashboardController::class, 'index'])->name('trader.dashboard');
+Route::get('/trader/profile', [UserDetailController::class, 'index'])->name('trader.profile');
 
-// Users Management
+Route::get('/operator/dashboard', [DashboardController::class, 'index'])->name('trader.dashboard');
 Route::get('/operator/users', [UserManagementController::class, 'index'])->name('operator.users');
