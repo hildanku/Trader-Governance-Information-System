@@ -8,7 +8,7 @@
     </div>
     <div class="sidebar-menu">
         <ul class="menu">
-            <li class='sidebar-title'>Menu Utama</li>
+            <li class='sidebar-title'>Main Menu</li>
             <li class="sidebar-item active ">
                 <a href="/operator/dashboard" class='sidebar-link'>
                     <i data-feather="home" width="20"></i> 

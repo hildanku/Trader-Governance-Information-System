@@ -4,8 +4,7 @@
             <div class="sidebar-wrapper active">
     <div class="sidebar-header">
        <!--- <img src="/front/dist/assets/images/logo.svg" alt="" srcset=""> -->
-        <a href="/"><h4>sSISTEM TATA KELOLA PEDAGANG</h4></a>
-    </div>
+       <a href="/"><h4 style="font-weight: bold">Trade Governance Information System</h4></a>
     <div class="sidebar-menu">
         <ul class="menu">
             <li class='sidebar-title'>Menu Utama</li>
