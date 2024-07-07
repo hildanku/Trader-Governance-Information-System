@@ -17,10 +17,10 @@ class LoginCheck
     {
         if (Auth::check())
         {
-            return redirect('/login');
+            return redirect('/home');
         }
         $user = Auth::user();
 
-        return redirect('/login')->with('Error', 'Login Terlebih Dahulu!');
+        return redirect('/home')->with('Error', 'You must login before use!');
     }
 }
