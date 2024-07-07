@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserAuthController;
-use App\Http\Controllers\Operators\DashboardController;
+use App\Http\Controllers\Operators\DashboardController as OperatorDashboardController;
 use App\Http\Controllers\Operators\UserManagementController;
-use App\Http\Controllers\Traders\DashboardController;
+use App\Http\Controllers\Traders\DashboardController as TraderDashboardController;
 use App\Http\Controllers\Traders\UserDetailController;
 
 /*
@@ -38,8 +38,8 @@ Route::post('/trader/login', [UserAuthController::class, 'loginProcess'])->name(
 Route::get('/trader/register', [UserAuthController::class, 'register'])->name('trader.register');
 Route::post('/trader/register', [UserAuthController::class, 'registerProcess'])->name('trader.register.process');
 
-Route::get('/trader/dashboard', [DashboardController::class, 'index'])->name('trader.dashboard');
+Route::get('/trader/dashboard', [TraderDashboardController::class, 'index'])->name('trader.dashboard');
 Route::get('/trader/profile', [UserDetailController::class, 'index'])->name('trader.profile');
 
-Route::get('/operator/dashboard', [DashboardController::class, 'index'])->name('trader.dashboard');
+Route::get('/operator/dashboard', [OperatorDashboardController::class, 'index'])->name('trader.dashboard');
 Route::get('/operator/users', [UserManagementController::class, 'index'])->name('operator.users');
