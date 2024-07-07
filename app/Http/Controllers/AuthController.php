@@ -15,7 +15,7 @@ class AuthController extends Controller
     {
         $user = Auth::user();
         if ($user) {
-            return redirect('/admin/dashboard');
+            return redirect('/operator/dashboard');
         }
         return view('Auth.login');
     }
@@ -29,7 +29,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
  
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/operator/dashboard');
         }
         // $credentials = $request->only('username', 'password');
         // if (Auth::attempt($credentials)) {
@@ -43,7 +43,7 @@ class AuthController extends Controller
     {
         $request->session()->flush();
         Auth::logout();
-        return redirect('/login');
+        return redirect('/home');
     }
 
     public function register()
