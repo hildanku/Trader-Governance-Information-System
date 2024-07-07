@@ -15,12 +15,10 @@ class LoginCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check())
-        {
-            return redirect('/home');
+        if (Auth::guard('web')->check() || Auth::guard('userCred')->check()) {
+            return $next($request);
         }
-        $user = Auth::user();
 
-        return redirect('/home')->with('Error', 'You must login before use!');
+        return redirect('/home')->with('error', 'You must be logged in to access this page');
     }
 }
