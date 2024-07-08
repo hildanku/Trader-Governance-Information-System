@@ -32,7 +32,7 @@ class LocationSeeder extends Seeder
                 'locationLongitude' => (string)$coord[0],
                 'locationLatitude' => (string)$coord[1],
                 'locationDescription' => 'Location ' . ($index + 1),
-                // 'status' => $index % 2 == 0 ? 'available' : 'unavailable',
+                'isAvailable' => $index % 2 == 0 ? 'yes' : 'no',
                 'areaId' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
