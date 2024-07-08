@@ -57,14 +57,14 @@ Route::middleware(['LoginCheck'])->group(function () {
     Route::get('/trader/business/edit/{id}', [UserBusinessController::class, 'edit'])->name('trader.business.edit');
     Route::post('/trader/business/update/{id}', [UserBusinessController::class, 'update'])->name('trader.business.update');
     Route::post('/trader/business/destroy/{id}', [UserBusinessController::class, 'destroy'])->name('trader.business.destroy');
-
-
-    Route::get('/trader/submission', [SubmissionController::class, 'index'])->name('trader.submission');
+   
+    Route::get('/trader/submissions', [SubmissionController::class, 'index'])->name('trader.submission');
     Route::get('/trader/submission/create', [SubmissionController::class, 'create'])->name('trader.submission.create');
     Route::post('/trader/submission/store', [SubmissionController::class, 'store'])->name('trader.submission.store');
     Route::get('/trader/submission/edit/{id}', [SubmissionController::class, 'edit'])->name('trader.submission.edit');
     Route::post('/trader/submission/update/{id}', [SubmissionController::class, 'update'])->name('trader.submission.update');
     Route::post('/trader/submission/destroy/{id}', [SubmissionController::class, 'destroy'])->name('trader.submission.destroy');
+    Route::get('/trader/submission/detail/{id}', [SubmissionController::class, 'detail'])->name('trader.submission.detail');
 });
 
 Route::middleware(['LoginCheck'])->group(function () {
