@@ -19,9 +19,9 @@
                                         <label>Business ID</label>
                                     </div>
                                     <fieldset class="form-group">
-                                        <select class="form-select" id="basicSelect">
+                                        <select name="businessId" class="form-select" id="businessSelect">
                                             @foreach ($dataBusiness as $business)
-                                            <option>{{ $business->id }} - {{ $business->businessName }}</option>
+                                            <option value="{{ $business->id }}">{{ $business->id }} - {{ $business->businessName }}</option>
                                             @endforeach
                                         </select>
                                     </fieldset>
@@ -29,13 +29,16 @@
                                         <label>Location ID</label>
                                     </div>
                                     <fieldset class="form-group">
-                                        <select class="form-select" id="basicSelect">
+                                        <select name="locationId" class="form-select" id="locationSelect">
                                             @foreach ($dataLocations as $location)
-                                            <option>{{ $location->id }} - {{ $location->locationCode }}</option>
+                                            <option value="{{ $location->id }}" data-lat="{{ $location->locationLatitude }}" data-lng="{{ $location->locationLongitude }}">{{ $location->id }} - {{ $location->locationCode }}</option>
                                             @endforeach
                                         </select>
                                     </fieldset>
-                                    {{-- <input type="hidden" name="userId" value="{{ $data->id }}"> --}}
+                                    <input type="hidden" id="locationLatitude" name="locationLatitude">
+                                    <input type="hidden" id="locationLongitude" name="locationLongitude">
+                                    <input type="hidden" name="userId" value="{{ $dataId }}">
+                                    {{-- <input type="hidden" name="reviewedBy" value="1"> --}}
                                     <div class="col-sm-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
@@ -69,21 +72,39 @@
         const apiKey = "v1.public.eyJqdGkiOiJmODVlNzExZC03MWE3LTQ3OTAtYWZjZC02ODBiOGM4OWMyMDYifZFF0YWJCtRWl0RrmK_4rEYz6RInVI3fmIXdAaleFg9o9pbDhc7A7VZ9VA-En-de2_zXaYIuup-b5a9EpTdbf-BjCSlN7yF8Bla8P2Gi-GqEQgokj9zLRDFJqYyDpqQM-xbL0ywbDL9i2pvB0uJeVmwKyce33xHDowN3GND2R9Ir1at4QRcuUMYBpljIUMTeH7pZXqgySRRQJYSK8gZ_gSZIPJGsAbTrXtZBaeeCTyaneCVCTnlGO914VbHrcH2td7LMYSl9MVggr-2Mawun6MRbrlsJ-p5ebCPXzoTaiEC963lHH4XRTx9-HENIFRIzIJrwCMHNrQMlwoDDX3Uec3M.ZWU0ZWIzMTktMWRhNi00Mzg0LTllMzYtNzlmMDU3MjRmYTkx";
         const mapName = "sisfo_tatakelolapedagang";
         const region = "us-east-1";
-        const lat = {{ $location->locationLatitude }};
-        const lng = {{ $location->locationLongitude }};
+
+        const locationSelect = document.getElementById('locationSelect');
+        const initialOption = locationSelect.options[locationSelect.selectedIndex];
+        const initialLat = parseFloat(initialOption.dataset.lat);
+        const initialLng = parseFloat(initialOption.dataset.lng);
 
         const map = new maplibregl.Map({
             container: 'map',
             style: `https://maps.geo.${region}.amazonaws.com/maps/v0/maps/${mapName}/style-descriptor?key=${apiKey}`,
-            center: [lng, lat],
+            center: [initialLng, initialLat],
             zoom: 17
         });
 
         map.addControl(new maplibregl.NavigationControl(), 'top-left');
 
         const marker = new maplibregl.Marker()
-            .setLngLat([lng, lat])
+            .setLngLat([initialLng, initialLat])
             .addTo(map);
+
+        document.getElementById('locationLatitude').value = initialLat;
+        document.getElementById('locationLongitude').value = initialLng;
+
+        locationSelect.addEventListener('change', function(e) {
+            const selectedOption = e.target.options[e.target.selectedIndex];
+            const lat = parseFloat(selectedOption.dataset.lat);
+            const lng = parseFloat(selectedOption.dataset.lng);
+
+            document.getElementById('locationLatitude').value = lat;
+            document.getElementById('locationLongitude').value = lng;
+
+            map.setCenter([lng, lat]);
+            marker.setLngLat([lng, lat]);
+        });
 
         map.on('click', function(e) {
             const lngLat = e.lngLat;
