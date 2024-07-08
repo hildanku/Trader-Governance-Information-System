@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -7,9 +7,12 @@ use App\Http\Controllers\Operators\DashboardController as OperatorDashboardContr
 use App\Http\Controllers\Operators\UserManagementController;
 use App\Http\Controllers\Operators\AreaManagementController;
 use App\Http\Controllers\Operators\LocationManagementController;
+use App\Http\Controllers\Operators\SubmissionManagementController as OperatorSubmissionController;
 
 use App\Http\Controllers\Traders\DashboardController as TraderDashboardController;
 use App\Http\Controllers\Traders\UserDetailController;
+use App\Http\Controllers\Traders\UserBusinessController;
+use App\Http\Controllers\Traders\SubmissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,10 +50,22 @@ Route::view('/home', 'home')->name('home');
 Route::middleware(['LoginCheck'])->group(function () {
     Route::get('/trader/dashboard', [TraderDashboardController::class, 'index'])->name('trader.dashboard');
     Route::get('/trader/profile', [UserDetailController::class, 'index'])->name('trader.profile');
+
+    Route::get('/trader/business', [UserBusinessController::class, 'index'])->name('trader.business');
+    Route::get('/trader/business/create', [UserBusinessController::class, 'create'])->name('trader.business.create');
+    Route::post('/trader/business/store', [UserBusinessController::class, 'store'])->name('trader.business.store');
+    Route::get('/trader/business/edit/{id}', [UserBusinessController::class, 'edit'])->name('trader.business.edit');
+    Route::post('/trader/business/update/{id}', [UserBusinessController::class, 'update'])->name('trader.business.update');
+    Route::post('/trader/business/destroy/{id}', [UserBusinessController::class, 'destroy'])->name('trader.business.destroy');
+
+
+    Route::get('/trader/submission', [SubmissionController::class, 'index'])->name('trader.submission');
+    Route::get('/trader/submission/create', [SubmissionController::class, 'create'])->name('trader.submission.create');
+    Route::post('/trader/submission/store', [SubmissionController::class, 'store'])->name('trader.submission.store');
+    Route::get('/trader/submission/edit/{id}', [SubmissionController::class, 'edit'])->name('trader.submission.edit');
+    Route::post('/trader/submission/update/{id}', [SubmissionController::class, 'update'])->name('trader.submission.update');
+    Route::post('/trader/submission/destroy/{id}', [SubmissionController::class, 'destroy'])->name('trader.submission.destroy');
 });
-
-
-Route::get('/operator/users', [UserManagementController::class, 'index'])->name('operator.users');
 
 Route::middleware(['LoginCheck'])->group(function () {
     // Dashboard
@@ -84,4 +99,10 @@ Route::middleware(['LoginCheck'])->group(function () {
     Route::post('/operator/location/update/{locationId}', [LocationManagementController::class, 'update'])->name('operator.locations.update');
     Route::post('operator/location/destroy/{locationId}', [LocationManagementController::class, 'destroy'])->name('operator.locations.destroy');
     // End Locations
+
+    // Submissions
+    Route::get('/operator/submissions', [OperatorSubmissionController::class, 'index'])->name('operator.submissions');
+    Route::get('/operator/submission/create', [OperatorSubmissionController::class, 'create'])->name('operator.submission.create');
+    Route::post('/operator/submission/{submissionId}/approve', [OperatorSubmissionController::class, 'approveSubmission'])->name('operator.submission.approve');
+    // End Submissions
 });
