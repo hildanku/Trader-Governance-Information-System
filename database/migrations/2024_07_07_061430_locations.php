@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('locationDescription');
             $table->string('locationLatitude');
             $table->string('locationLongitude');
+            $table->enum('isAvailable', ['yes', 'no'])->default('yes');
             $table->foreignId('areaId')->references('id')->on('areas')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
