@@ -18,7 +18,7 @@ class SubmissionManagementController extends Controller
         ->join('userbusiness',  'submissions.businessId', '=', 'userbusiness.id')
         ->join('operatorcredentials', 'submissions.reviewedBy', '=', 'operatorcredentials.id')
         ->join('usercredentials', 'submissions.userId', '=', 'usercredentials.id')
-        ->select('submissions.*', 'usercredentials.username', 'locations.locationCode', 'locations.locationLatitude', 'locations.locationLongitude', 'userbusiness.businessName', 'operatorcredentials.fullname')
+        ->select('submissions.*', 'usercredentials.fullname as submittedBy', 'locations.locationCode', 'locations.locationLatitude', 'locations.locationLongitude', 'userbusiness.businessName', 'operatorcredentials.fullname')
         ->get();
 
         return view('operators.submissionManagement.index', compact('datas'));
