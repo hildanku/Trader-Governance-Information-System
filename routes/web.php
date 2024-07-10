@@ -104,5 +104,10 @@ Route::middleware(['LoginCheck'])->group(function () {
     Route::get('/operator/submissions', [OperatorSubmissionController::class, 'index'])->name('operator.submissions');
     Route::get('/operator/submission/create', [OperatorSubmissionController::class, 'create'])->name('operator.submission.create');
     Route::post('/operator/submission/{submissionId}/approve', [OperatorSubmissionController::class, 'approveSubmission'])->name('operator.submission.approve');
+    Route::post('/operator/submission/{submissionId}/reject', [OperatorSubmissionController::class, 'rejectSubmission'])->name('operator.submission.reject');
     // End Submissions
 });
+
+// otheR
+Route::get('/pages/locations', [LocationManagementController::class, 'showAllLocation'])->name('location');
+Route::get('/api/locations', [LocationManagementController::class, 'getAll'])->name('api.locations');
