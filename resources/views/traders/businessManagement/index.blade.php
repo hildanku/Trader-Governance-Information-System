@@ -54,7 +54,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel{{ $data->id }}">Delete Food</h5>
+        <h5 class="modal-title" id="deleteModalLabel{{ $data->id }}">Delete Data</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -80,7 +80,7 @@
       $('.delete-btn').click(function() {
           var id = $(this).data('food-id');
           var foodName = $(this).closest('tr').find('td:first').text().trim(); // Get food name from the first td of the current row
-          $('#deleteModalLabel' + id).text('Delete Food');
+          $('#deleteModalLabel' + id).text('Delete Data');
           $('#deleteModal' + id).modal('show');
       });
     });
