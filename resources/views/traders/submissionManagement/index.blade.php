@@ -16,8 +16,8 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Business ID</th>
-                    <th>Location ID</th>
+                    <th>Business Name</th>
+                    <th>Location Code</th>
                     <th>Status Submission</th>
                     {{-- <th>Reviewed By</th> --}}
                     <th>Action</th>
@@ -26,15 +26,24 @@
                 <tbody>
                     @foreach ($datas as $data)
                     <tr>
-                        <td>{{ $data->businessId }}</td>
-                        <td>{{ $data->locationId }}</td>
-                        <td>{{ $data->status }}</td>
+                        <td>{{ $data->businessName }}</td>
+                        <td>{{ $data->locationCode }}</td>
+                        <td>
+                          @if ($data->status == 'pending')
+                            <span class="badge bg-warning">Pending</span>
+                          @elseif ($data->status == 'approved')
+                            <span class="badge bg-success">Approved</span>
+                          @elseif ($data->status == 'rejected')
+                            <span class="badge bg-danger">Rejected</span>
+                          @endif
+                          {{-- {{ $data->status }} --}}
+                        </td>
                         {{-- <td>{{ $data->reviewedBy }}</td> --}}
                         <td>
-                            <a class="btn btn-warning" href="{{ route('trader.submission.edit', $data->id) }}">Edit</a>
-                            <button type="button" class="btn btn-danger btn-sm delete-btn" data-food-id="{{ $data->id }}" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
+                            <a class="btn btn-primary" href="{{ route('trader.submission.detail', $data->id) }}">Detail</a>
+                            {{-- <button type="button" class="btn btn-danger btn-sm delete-btn" data-food-id="{{ $data->id }}" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
                               Delete
-                            </button>
+                            </button> --}}
                         </td>
                     </tr>
                   @endforeach

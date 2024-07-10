@@ -18,16 +18,27 @@
                                     {{-- <div class="col-md-4">
                                         <label>Business Name</label>
                                     </div> --}}
-                                    <p><>Business Name:</> {{ $data->businessName }}</p>
-                                    <p><>Location Code:</> {{ $data->locationCode }}</p>
-                                    <p><>Reviewed By:</> {{ $data->fullname }}</p>
-                                    <p><>Submission Status:</> {{ $data->status }}</p>
+                                    <p>Business Name: {{ $data->businessName }}</p>
+                                    <p>Business Name: {{ $data->businessType }}</p>
+                                    <p>Location Code: {{ $data->locationCode }}</p>
+                                    <p>Reviewed By: {{ $data->fullname }}</p>
+                                    <p>Submission Status:
+                                        @if ($data->status == 'pending')
+                                            <span class="badge bg-warning">Pending</span>
+                                        @elseif ($data->status == 'approved')
+                                            <span class="badge bg-success">Approved</span>
+                                        @elseif ($data->status == 'rejected')
+                                            <span class="badge bg-danger">Rejected</span>
+                                        @endif
+                                        {{-- {{ $data->status }} --}}
+                                    </p>
 
                                     {{-- <div class="col-md-8 form-group">
                                         <input type="text" class="form-control" name="businessName" value="{{ $data->businessName }}" required>
                                     </div> --}}
                                     <div class="col-sm-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Print</button>
+                                        <a href="{{ route('trader.submission') }}" class="btn btn-light-secondary me-1 mb-1">Back</a>
                                         {{-- <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button> --}}
                                     </div>
                                 </div>
