@@ -13,6 +13,7 @@
 </head>
 <body>
     <h1>Submission #{{ $data->id }} | {{ $data->businessName }}</h1>
+    <p>Permit Number: {{ $data->permitNumber }}</p>
     <p>Business Name: {{ $data->businessName }}</p>
     <p>Owned by: {{ $data->businessOwner }}</p>
     <p>Location Code: {{ $data->locationCode }}</p>
