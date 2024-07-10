@@ -27,9 +27,9 @@
                 </a>
             </li>
             <li class="sidebar-item  ">
-                <a href="/lapak" class='sidebar-link'>
+                <a href="/pages/locations" class='sidebar-link'>
                     <i data-feather="maps" width="20"></i> 
-                    <span>Ketersediaan Lapak</span>
+                    <span>Check Available Locations</span>
                 </a>
             </li>
         </ul>
