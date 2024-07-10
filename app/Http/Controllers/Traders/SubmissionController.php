@@ -67,7 +67,7 @@ class SubmissionController extends Controller
         ->join('locations', 'submissions.locationId', '=', 'locations.id')
         ->join('userbusiness', 'submissions.businessId', '=', 'userbusiness.id')
         ->join('operatorcredentials', 'submissions.reviewedBy', '=', 'operatorcredentials.id')
-        ->select('submissions.*', 'locations.locationCode', 'locations.locationLatitude', 'locations.locationLongitude', 'userbusiness.businessName', 'operatorcredentials.fullname')
+        ->select('submissions.*', 'locations.locationCode', 'locations.locationLatitude', 'locations.locationLongitude', 'userbusiness.businessName', 'userbusiness.businessType', 'operatorcredentials.fullname')
         ->where('submissions.id', $id)
         ->first();
 
