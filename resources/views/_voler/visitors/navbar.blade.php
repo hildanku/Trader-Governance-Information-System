@@ -2,40 +2,49 @@
     <div id="app">
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
-    <div class="sidebar-header">
-       <!--- <img src="/front/dist/assets/images/logo.svg" alt="" srcset=""> -->
-       <a href="/"><h4 style="font-weight: bold">Trade Governance Information System</h4></a>
-    <div class="sidebar-menu">
-        <ul class="menu">
-            <li class='sidebar-title'>Menu Utama</li>
-            <li class="sidebar-item active ">
-                <a href="index.html" class='sidebar-link'>
-                    <i data-feather="home" width="20"></i> 
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li class="sidebar-item  ">
-                <a href="/register" class='sidebar-link'>
-                    <i data-feather="users" width="20"></i> 
-                    <span>Registrasi</span>
-                </a>
-            </li>
-            <li class="sidebar-item  ">
-                <a href="/pages/about" class='sidebar-link'>
-                    <i data-feather="maps" width="20"></i> 
-                    <span>About Us</span>
-                </a>
-            </li>
-            <li class="sidebar-item  ">
-                <a href="/pages/locations" class='sidebar-link'>
-                    <i data-feather="maps" width="20"></i> 
-                    <span>Check Available Locations</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
-</div>
+                <div class="sidebar-header">
+                <!--- <img src="/front/dist/assets/images/logo.svg" alt="" srcset=""> -->
+                <a href="/"><h4 style="font-weight: bold">Trade Governance Information System</h4></a>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class='sidebar-title'>Menu Utama</li>
+                        <li class="sidebar-item active ">
+                            <a href="/home" class='sidebar-link'>
+                                <i data-feather="home" width="20"></i> 
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i data-feather="users" width="20"></i> 
+                                <span>Account</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li>
+                                    <a href="/trader/register">Registration</a>
+                                </li>
+                                <li>
+                                    <a href="/device">Login</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item  ">
+                            <a href="/pages/locations" class='sidebar-link'>
+                                <i data-feather="map-pin" width="20"></i> 
+                                <span>Check location availability</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">
+                            <a href="/pages/about" class='sidebar-link'>
+                                <i data-feather="info" width="20"></i> 
+                                <span>About Us</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
         </div>
         <div id="main">
             <nav class="navbar navbar-header navbar-expand navbar-light">
@@ -54,15 +63,14 @@
                                 <div class="d-none d-md-block d-lg-inline-block">Hi, Visitor!</div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
+                                {{-- <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
                                 <a class="dropdown-item active" href="#"><i data-feather="mail"></i> Messages</a>
                                 <a class="dropdown-item" href="#"><i data-feather="settings"></i> Settings</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route ('logout') }}"><i data-feather="log-out"></i> Logout</a>
+                                <a class="dropdown-item" href="{{ route ('logout') }}"><i data-feather="log-out"></i> Logout</a> --}}
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
-            
-<div class="main-content container-fluid">
+            <div class="main-content container-fluid">
