@@ -57,4 +57,14 @@ class LocationManagementController extends Controller
         DB::table('locations')->where('id', $locationId)->delete();
         return redirect('/operator/locations');
     }
+
+    public function showAllLocation()
+    {
+        return view('location');
+    }
+    public function getAll()
+    {
+        $datas = DB::table('locations')->get();
+        return $datas;
+    }
 }
