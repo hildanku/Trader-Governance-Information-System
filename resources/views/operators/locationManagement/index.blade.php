@@ -39,7 +39,7 @@
                         <td>{{ $data->locationDescription }}</td>
                         <td>{{ $data->locationLatitude }}</td>
                         <td>{{ $data->locationLongitude }}</td>
-                        <td>{{ $data->areaId }}</td>
+                        <td>{{ $data->areaName }}</td>
                         <td>
                             {{-- <a href="{{ route('operators.userManagement.show', $data->id) }}" class="btn btn-primary">View</a> --}}
                             {{-- <a href="{{ route('operators.userManagement.edit', $data->id) }}" class="btn btn-primary">Edit</a>
