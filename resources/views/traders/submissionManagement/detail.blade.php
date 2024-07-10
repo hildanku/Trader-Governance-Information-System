@@ -38,7 +38,7 @@
                                     </div> --}}
                                     <div class="col-sm-12 d-flex justify-content-end">
                                         @if ($data->status == 'approved')
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Print</button>
+                                        <a href="{{ route('printPdf', $data->id) }}" class="btn btn-primary me-1 mb-1">Print</a>
                                         @elseif ($data->status == 'rejected')
                                         <button type="submit" class="btn btn-primary me-1 mb-1" disabled>Print</button>
                                         @endif
