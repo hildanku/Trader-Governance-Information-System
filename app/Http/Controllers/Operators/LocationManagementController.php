@@ -10,7 +10,11 @@ class LocationManagementController extends Controller
 {
     public function index()
     {
-        $datas = DB::table('locations')->get();
+        // $datas = DB::table('locations')->get();
+        $datas = DB::table('locations')
+        ->join('areas', 'locations.areaId', '=', 'areas.id')
+        ->select('locations.*', 'areas.areaName')
+        ->get();
         return view('operators.locationManagement.index', compact('datas'));
     }
 
