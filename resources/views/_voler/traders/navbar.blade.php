@@ -8,23 +8,29 @@
     </div>
     <div class="sidebar-menu">
         <ul class="menu">
-            <li class='sidebar-title'>Menu Utama</li>
+            <li class='sidebar-title'>Main Menu</li>
             <li class="sidebar-item active ">
-                <a href="index.html" class='sidebar-link'>
+                <a href="/" class='sidebar-link'>
                     <i data-feather="home" width="20"></i> 
                     <span>Dashboard</span>
                 </a>
             </li>
             <li class="sidebar-item  ">
-                <a href="/register" class='sidebar-link'>
+                <a href="/trader/business" class='sidebar-link'>
                     <i data-feather="users" width="20"></i> 
-                    <span>Registrasi</span>
+                    <span>Business Management</span>
                 </a>
             </li>
             <li class="sidebar-item  ">
-                <a href="/lapak" class='sidebar-link'>
-                    <i data-feather="maps" width="20"></i> 
-                    <span>Ketersediaan Lapak</span>
+                <a href="/trader/submissions" class='sidebar-link'>
+                    <i data-feather="mail" width="20"></i> 
+                    <span>Submission Management</span>
+                </a>
+            </li>
+            <li class="sidebar-item  ">
+                <a href="/pages/locations" class='sidebar-link'>
+                    <i data-feather="map-pin" width="20"></i> 
+                    <span>Check Availability Location</span>
                 </a>
             </li>
         </ul>
