@@ -29,7 +29,7 @@
                     @foreach ($datas as $data)
                     <tr>
                         <td>{{ $data->businessName }}</td>
-                        <td>{{ $data->username }}</td>
+                        <td>{{ $data->submittedBy }}</td>
                         <td>{{ $data->locationCode }}</td>
                         <td>{{ $data->status }}</td>
                         <td>{{ $data->fullname }}</td>
@@ -42,6 +42,7 @@
                           data-bs-target="#approveModal{{ $data->id }}">
                             Approve
                           </button> --}}
+                          @if($data->status == 'pending')
                           <button type="button" 
                             class="btn btn-success btn-sm approve-btn" 
                             data-submission-id="{{ $data->id }}" 
@@ -56,6 +57,7 @@
                           data-bs-target="#rejectModal{{ $data->id }}">
                           Reject
                         </button>
+                          @endif
                             {{-- <a class="btn btn-warning" href="{{ route('operator.areas.edit', $data->id) }}">Edit</a> --}}
                             {{-- <button type="button" class="btn btn-danger btn-sm delete-btn" data-food-id="{{ $data->id }}" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
                               Delete
