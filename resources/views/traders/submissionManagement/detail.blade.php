@@ -37,8 +37,12 @@
                                         <input type="text" class="form-control" name="businessName" value="{{ $data->businessName }}" required>
                                     </div> --}}
                                     <div class="col-sm-12 d-flex justify-content-end">
+                                        @if ($data->status == 'approved')
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Print</button>
-                                        <a href="{{ route('trader.submission') }}" class="btn btn-light-secondary me-1 mb-1">Back</a>
+                                        @elseif ($data->status == 'rejected')
+                                        <button type="submit" class="btn btn-primary me-1 mb-1" disabled>Print</button>
+                                        @endif
+                                        <a href="{{ route('trader.submission') }}" class="btn btn-dark me-1 mb-1">Back</a>
                                         {{-- <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button> --}}
                                     </div>
                                 </div>
