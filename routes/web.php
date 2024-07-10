@@ -8,6 +8,7 @@ use App\Http\Controllers\Operators\UserManagementController;
 use App\Http\Controllers\Operators\AreaManagementController;
 use App\Http\Controllers\Operators\LocationManagementController;
 use App\Http\Controllers\Operators\SubmissionManagementController as OperatorSubmissionController;
+use App\Http\Controllers\Operators\PermitManagementController;
 
 use App\Http\Controllers\Traders\DashboardController as TraderDashboardController;
 use App\Http\Controllers\Traders\UserDetailController;
@@ -99,17 +100,20 @@ Route::middleware(['LoginCheck'])->group(function () {
     Route::post('/operator/location/update/{locationId}', [LocationManagementController::class, 'update'])->name('operator.locations.update');
     Route::post('operator/location/destroy/{locationId}', [LocationManagementController::class, 'destroy'])->name('operator.locations.destroy');
     // End Locations
+    
 
     // Submissions
     Route::get('/operator/submissions', [OperatorSubmissionController::class, 'index'])->name('operator.submissions');
     Route::get('/operator/submission/create', [OperatorSubmissionController::class, 'create'])->name('operator.submission.create');
     Route::post('/operator/submission/{submissionId}/approve', [OperatorSubmissionController::class, 'approveSubmission'])->name('operator.submission.approve');
     Route::post('/operator/submission/{submissionId}/reject', [OperatorSubmissionController::class, 'rejectSubmission'])->name('operator.submission.reject');
+    Route::get('/submission/print/{id}', [SubmissionController::class, 'printPdf'])->name('printPdf');
     // End Submissions
+
+    Route::get('/operator/permits', [PermitManagementController::class, 'index'])->name('operator.permits');
 });
 
 // otheR
 Route::get('/pages/locations', [LocationManagementController::class, 'showAllLocation'])->name('location');
 Route::get('/api/locations', [LocationManagementController::class, 'getAll'])->name('api.locations');
 
-Route::get('/submission/print/{id}', [SubmissionController::class, 'printPdf'])->name('printPdf');
