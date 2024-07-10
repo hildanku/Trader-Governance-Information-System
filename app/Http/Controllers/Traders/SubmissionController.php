@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+
 class SubmissionController extends Controller
 {
     public function index()
@@ -73,4 +77,35 @@ class SubmissionController extends Controller
 
         return view('traders.submissionManagement.detail', compact('data'));
     }   
+    public function printPdf($submissionId)
+    {
+    $data = DB::table('permits')
+    ->join('submissions', 'permits.submissionId', '=', 'submissions.id')
+    ->join('locations', 'submissions.locationId', '=', 'locations.id')
+    ->join('userbusiness', 'submissions.businessId', '=', 'userbusiness.id')
+    ->join('operatorcredentials', 'submissions.reviewedBy', '=', 'operatorcredentials.id')
+    ->select('permits.*', 'submissions.*', 'userbusiness.businessOwner', 'locations.locationCode', 'locations.locationLatitude', 'locations.locationLongitude', 'userbusiness.businessName', 'operatorcredentials.fullname')
+    ->where('submissions.id', $submissionId)
+    ->first();
+
+    // Load view content
+    $html = view('printPdf', compact('data'))->render();
+
+    // Setup Dompdf
+    $options = new Options();
+    $options->set('isHtml5ParserEnabled', true);
+    $options->set('isPhpEnabled', true);
+
+    $dompdf = new Dompdf($options);
+    $dompdf->loadHtml($html);
+
+    // (Optional) Setup paper size and orientation
+    $dompdf->setPaper('A4', 'portrait');
+
+    // Render the HTML as PDF
+    $dompdf->render();
+
+    // Output the generated PDF (inline or download)
+    return $dompdf->stream('submission_' . $data->id . '.pdf');
+    }
 }

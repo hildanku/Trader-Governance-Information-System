@@ -111,3 +111,5 @@ Route::middleware(['LoginCheck'])->group(function () {
 // otheR
 Route::get('/pages/locations', [LocationManagementController::class, 'showAllLocation'])->name('location');
 Route::get('/api/locations', [LocationManagementController::class, 'getAll'])->name('api.locations');
+
+Route::get('/submission/print/{id}', [SubmissionController::class, 'printPdf'])->name('printPdf');
