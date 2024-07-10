@@ -28,11 +28,11 @@
                 <tbody>
                     @foreach ($datas as $data)
                     <tr>
-                        <td>{{ $data->businessId }}</td>
-                        <td>{{ $data->userId }}</td>
-                        <td>{{ $data->locationId }}</td>
+                        <td>{{ $data->businessName }}</td>
+                        <td>{{ $data->username }}</td>
+                        <td>{{ $data->locationCode }}</td>
                         <td>{{ $data->status }}</td>
-                        <td>{{ $data->reviewedBy }}</td>
+                        <td>{{ $data->fullname }}</td>
                         <td>{{ $data->created_at }}</td>                      
                         <td>
                           {{-- <button type="button" 
@@ -49,10 +49,17 @@
                             data-bs-target="#approveModal{{ $data->id }}">
                             Approve
                           </button>
+                          <button type="button" 
+                          class="btn btn-danger btn-sm reject-btn" 
+                          data-submission-id="{{ $data->id }}" 
+                          data-bs-toggle="modal" 
+                          data-bs-target="#rejectModal{{ $data->id }}">
+                          Reject
+                        </button>
                             {{-- <a class="btn btn-warning" href="{{ route('operator.areas.edit', $data->id) }}">Edit</a> --}}
-                            <button type="button" class="btn btn-danger btn-sm delete-btn" data-food-id="{{ $data->id }}" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
+                            {{-- <button type="button" class="btn btn-danger btn-sm delete-btn" data-food-id="{{ $data->id }}" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
                               Delete
-                            </button>
+                            </button> --}}
                         </td>
                     </tr>
                   @endforeach
@@ -88,6 +95,36 @@
           @csrf
           @method('POST')
           <button type="submit" class="btn btn-success">Approve</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
+@foreach ($datas as $data)
+<!-- Approve Modal -->
+<div class="modal fade" id="rejectModal{{ $data->id }}" tabindex="-1" aria-labelledby="rejectModalLabel{{ $data->id }}" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="rejectModalLabel{{ $data->id }}">Reject Submission</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to reject this submission?</p>
+        <p><strong>Business ID:</strong> {{ $data->businessName }}</p>
+        <p><strong>User ID:</strong> {{ $data->userId }}</p>
+        <p><strong>Location ID:</strong> {{ $data->locationCode }}</p>
+        <p><strong>Status:</strong> {{ $data->status }}</p>
+        <p><strong>Reviewed By:</strong> {{ $data->fullname }}</p>
+        <p><strong>Created At:</strong> {{ $data->created_at }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <form action="{{ route('operator.submission.reject', $data->id) }}" method="POST">
+          @csrf
+          @method('POST')
+          <button type="submit" class="btn btn-success">Reject</button>
         </form>
       </div>
     </div>
