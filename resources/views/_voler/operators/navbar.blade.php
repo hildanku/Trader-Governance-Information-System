@@ -39,6 +39,12 @@
                     <span>Submission Management</span>
                 </a>
             </li>
+            <li class="sidebar-item  ">
+                <a href="/operator/permits" class='sidebar-link'>
+                    <i data-feather="check-square" width="20"></i> 
+                    <span>Permits Management</span>
+                </a>
+            </li>
         </ul>
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
