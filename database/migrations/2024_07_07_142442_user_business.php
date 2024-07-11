@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('userBusiness', function (Blueprint $table) {
+        Schema::create('userbusiness', function (Blueprint $table) {
             $table->id();
             $table->foreignId('userId')->references('id')->on('userCredentials')->onDelete('cascade')->onUpdate('cascade');
             $table->string('businessName');

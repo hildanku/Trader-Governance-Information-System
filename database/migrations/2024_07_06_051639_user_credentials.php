@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('userCredentials', function (Blueprint $table) {
+        Schema::create('usercredentials', function (Blueprint $table) {
             $table->id();
             $table->string('fullname');
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();
-        });
+        });   
     }
 
     /**
