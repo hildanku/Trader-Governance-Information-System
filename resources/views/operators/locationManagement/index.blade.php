@@ -44,6 +44,7 @@
                             {{-- <a href="{{ route('operators.userManagement.show', $data->id) }}" class="btn btn-primary">View</a> --}}
                             {{-- <a href="{{ route('operators.userManagement.edit', $data->id) }}" class="btn btn-primary">Edit</a>
                             <a href="{{ route('operators.userManagement.destroy', $data->id) }}" class="btn btn-danger">Delete</a> --}}
+                            <a href="{{ route('operator.locations.edit', $data->id) }}" class="btn btn-primary">Edit</a>
                             <button type="button" class="btn btn-danger btn-sm delete-btn" data-food-id="{{ $data->id }}" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
                               Delete
                             </button>
