@@ -31,7 +31,15 @@
                         <td>{{ $data->businessName }}</td>
                         <td>{{ $data->submittedBy }}</td>
                         <td>{{ $data->locationCode }}</td>
-                        <td>{{ $data->status }}</td>
+                        <td>
+                          @if ($data->status == 'pending')
+                            <span class="badge bg-warning">Pending</span>
+                          @elseif ($data->status == 'approved')
+                            <span class="badge bg-success">Approved</span>
+                          @elseif ($data->status == 'rejected')
+                            <span class="badge bg-danger">Rejected</span>
+                          @endif
+                        </td>
                         <td>{{ $data->fullname }}</td>
                         <td>{{ $data->created_at }}</td>                      
                         <td>
@@ -57,6 +65,21 @@
                           data-bs-target="#rejectModal{{ $data->id }}">
                           Reject
                         </button>
+                        @elseif($data->status == 'rejected' || $data->status == 'approved')
+                        <button type="button" 
+                        class="btn btn-success btn-sm approve-btn" 
+                        data-submission-id="{{ $data->id }}" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#approveModal{{ $data->id }}" disabled>
+                        Approve
+                      </button>
+                        <button type="button" 
+                        class="btn btn-danger btn-sm reject-btn" 
+                        data-submission-id="{{ $data->id }}" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#rejectModal{{ $data->id }}" disabled>
+                        Reject
+                      </button>
                           @endif
                             {{-- <a class="btn btn-warning" href="{{ route('operator.areas.edit', $data->id) }}">Edit</a> --}}
                             {{-- <button type="button" class="btn btn-danger btn-sm delete-btn" data-food-id="{{ $data->id }}" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
