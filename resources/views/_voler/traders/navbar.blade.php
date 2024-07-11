@@ -10,7 +10,7 @@
         <ul class="menu">
             <li class='sidebar-title'>Main Menu</li>
             <li class="sidebar-item active ">
-                <a href="/" class='sidebar-link'>
+                <a href="/trader/dashboard" class='sidebar-link'>
                     <i data-feather="home" width="20"></i> 
                     <span>Dashboard</span>
                 </a>
@@ -52,7 +52,7 @@
                                 <div class="avatar me-1">
                                     <img src="{{ asset ('/_voler/dist/assets/images/avatar/avatar-s-1.png') }}" alt="" srcset="">
                                 </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Hi, Visitor!</div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hi,  Auth::user('userCred')->fullname !</div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 {{-- <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
