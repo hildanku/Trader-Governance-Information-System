@@ -38,6 +38,8 @@ class UserBusinessController extends Controller
             'businessType' => $request->businessType,
             'businessOwner' => $request->businessOwner,
             'businessContactNumber' => $request->businessContactNumber,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         return redirect('/trader/business');
     }
@@ -54,6 +56,7 @@ class UserBusinessController extends Controller
             'businessType' => $request->businessType,
             'businessOwner' => $request->businessOwner,
             'businessContactNumber' => $request->businessContactNumber,
+            'updated_at' => now(),
         ]);
         return redirect('/trader/business');
     }
