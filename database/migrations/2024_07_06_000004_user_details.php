@@ -11,7 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('userdetails', function (Blueprint $table) {
+        Schema::create('userDetails', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
             $table->id();
             // $table->ForeignId('userId')->constrained('userCredentials')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('userId')->references('id')->on('userCredentials')->onDelete('cascade')->onUpdate('cascade');
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('userdetails');
+        Schema::dropIfExists('userDetails');
     }
 };

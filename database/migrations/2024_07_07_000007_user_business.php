@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('userbusiness', function (Blueprint $table) {
+        Schema::create('userBusiness', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
             $table->id();
-            $table->foreignId('userId')->references('id')->on('userCredentials')->onDelete('cascade')->onUpdate('cascade');
             $table->string('businessName');
             $table->string('businessType');
             $table->string('businessOwner');
             $table->string('businessContactNumber');
+            $table->foreignId('userId')->references('id')->on('userCredentials')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
