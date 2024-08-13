@@ -10,7 +10,7 @@ class OperatorCredential extends Authenticatable
 {
     use HasFactory;
 
-    protected $table = 'operatorcredentials';
+    protected $table = 'operatorCredentials';
     protected $fillable = ['fullname', 'username', 'email', 'password'];
     protected $hidden = [
         'password',

@@ -9,7 +9,7 @@ class UserCredential extends Authenticatable
 {
     use HasFactory;
 
-    protected $table = 'usercredentials';
+    protected $table = 'userCredentials';
     protected $fillable = ['fullname', 'username', 'email', 'password'];
     protected $hidden = ['password'];
 }

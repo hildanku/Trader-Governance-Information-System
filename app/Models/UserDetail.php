@@ -9,6 +9,6 @@ class UserDetail extends Model
 {
     use HasFactory;
 
-    protected $table = 'userdetails';
+    protected $table = 'userDetails';
     protected $fillable = ['userId', 'gender', 'address', 'homePhoneNumber'];
 }
