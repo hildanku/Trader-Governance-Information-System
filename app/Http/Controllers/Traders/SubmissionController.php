@@ -21,9 +21,9 @@ class SubmissionController extends Controller
         
         $datas = DB::table('submissions')
         ->join('locations', 'submissions.locationId', '=', 'locations.id')
-        ->join('userbusiness',  'submissions.businessId', '=', 'userbusiness.id')
-        ->join('operatorcredentials', 'submissions.reviewedBy', '=', 'operatorcredentials.id')
-        ->select('submissions.*', 'locations.locationCode', 'locations.locationLatitude', 'locations.locationLongitude', 'userbusiness.businessName', 'operatorcredentials.fullname')
+        ->join('userBusiness',  'submissions.businessId', '=', 'userBusiness.id')
+        ->join('operatorCredentials', 'submissions.reviewedBy', '=', 'operatorCredentials.id')
+        ->select('submissions.*', 'locations.locationCode', 'locations.locationLatitude', 'locations.locationLongitude', 'userBusiness.businessName', 'operatorCredentials.fullname')
         ->where('submissions.userId', $user->id)
         ->get();
         
@@ -69,9 +69,9 @@ class SubmissionController extends Controller
         
         $data = DB::table('submissions')
         ->join('locations', 'submissions.locationId', '=', 'locations.id')
-        ->join('userbusiness', 'submissions.businessId', '=', 'userbusiness.id')
-        ->join('operatorcredentials', 'submissions.reviewedBy', '=', 'operatorcredentials.id')
-        ->select('submissions.*', 'locations.locationCode', 'locations.locationLatitude', 'locations.locationLongitude', 'userbusiness.businessName', 'userbusiness.businessType', 'operatorcredentials.fullname')
+        ->join('userBusiness', 'submissions.businessId', '=', 'userBusiness.id')
+        ->join('operatorCredentials', 'submissions.reviewedBy', '=', 'operatorCredentials.id')
+        ->select('submissions.*', 'locations.locationCode', 'locations.locationLatitude', 'locations.locationLongitude', 'userBusiness.businessName', 'userBusiness.businessType', 'operatorCredentials.fullname')
         ->where('submissions.id', $id)
         ->first();
 
@@ -82,9 +82,9 @@ class SubmissionController extends Controller
     $data = DB::table('permits')
     ->join('submissions', 'permits.submissionId', '=', 'submissions.id')
     ->join('locations', 'submissions.locationId', '=', 'locations.id')
-    ->join('userbusiness', 'submissions.businessId', '=', 'userbusiness.id')
-    ->join('operatorcredentials', 'submissions.reviewedBy', '=', 'operatorcredentials.id')
-    ->select('permits.*', 'submissions.*', 'userbusiness.businessOwner', 'locations.locationCode', 'locations.locationLatitude', 'locations.locationLongitude', 'userbusiness.businessName', 'operatorcredentials.fullname')
+    ->join('userBusiness', 'submissions.businessId', '=', 'userBusiness.id')
+    ->join('operatorCredentials', 'submissions.reviewedBy', '=', 'operatorCredentials.id')
+    ->select('permits.*', 'submissions.*', 'userBusiness.businessOwner', 'locations.locationCode', 'locations.locationLatitude', 'locations.locationLongitude', 'userBusiness.businessName', 'operatorCredentials.fullname')
     ->where('submissions.id', $submissionId)
     ->first();
 
