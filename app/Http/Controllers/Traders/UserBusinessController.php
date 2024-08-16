@@ -12,11 +12,6 @@ class UserBusinessController extends Controller
     public function index()
     {
         $user = Auth::guard('userCred')->user();
-
-        // $datas = DB::table('userbusiness')->where('userId', Auth::user()->id)->get();
-
-        // $userdetail = DB::table('userdetails')->where('userId', $user->id)->first();
-        
         $datas = DB::table('userBusiness')->where('userId', $user->id)->get();
         
         return view('traders.businessManagement.index', compact('datas'));
@@ -24,7 +19,7 @@ class UserBusinessController extends Controller
     public function create()
     {
         // $user = Auth::guard('userCred')->user();
-
+        
         // $data = DB::table('userdetails')->where('id', $user->id)->first();
         // return view('traders.businessManagement.create', compact('data'));
         return view('traders.businessManagement.create');
