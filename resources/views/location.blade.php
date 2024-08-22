@@ -9,9 +9,9 @@
 <div id="map" />
     <script src="https://unpkg.com/maplibre-gl@3.x/dist/maplibre-gl.js"></script>
     <script>
-const apiKey = "v1.public.eyJqdGkiOiJmODVlNzExZC03MWE3LTQ3OTAtYWZjZC02ODBiOGM4OWMyMDYifZFF0YWJCtRWl0RrmK_4rEYz6RInVI3fmIXdAaleFg9o9pbDhc7A7VZ9VA-En-de2_zXaYIuup-b5a9EpTdbf-BjCSlN7yF8Bla8P2Gi-GqEQgokj9zLRDFJqYyDpqQM-xbL0ywbDL9i2pvB0uJeVmwKyce33xHDowN3GND2R9Ir1at4QRcuUMYBpljIUMTeH7pZXqgySRRQJYSK8gZ_gSZIPJGsAbTrXtZBaeeCTyaneCVCTnlGO914VbHrcH2td7LMYSl9MVggr-2Mawun6MRbrlsJ-p5ebCPXzoTaiEC963lHH4XRTx9-HENIFRIzIJrwCMHNrQMlwoDDX3Uec3M.ZWU0ZWIzMTktMWRhNi00Mzg0LTllMzYtNzlmMDU3MjRmYTkx";
-      const mapName = "sisfo_tatakelolapedagang";
-      const region = "us-east-1";
+      const apiKey = "{{ env('ALS_API_KEY') }}";
+      const mapName = "{{ env('ALS_MAP_NAME') }}";
+      const region = "{{ env('ALS_REGION') }}";
 
       const map = new maplibregl.Map({
         container: "map",
