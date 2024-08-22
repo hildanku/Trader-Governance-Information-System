@@ -15,10 +15,10 @@ class SubmissionManagementController extends Controller
 
         $datas = DB::table('submissions')
         ->join('locations', 'submissions.locationId', '=', 'locations.id')
-        ->join('userbusiness',  'submissions.businessId', '=', 'userbusiness.id')
-        ->join('operatorcredentials', 'submissions.reviewedBy', '=', 'operatorcredentials.id')
-        ->join('usercredentials', 'submissions.userId', '=', 'usercredentials.id')
-        ->select('submissions.*', 'usercredentials.fullname as submittedBy', 'locations.locationCode', 'locations.locationLatitude', 'locations.locationLongitude', 'userbusiness.businessName', 'operatorcredentials.fullname')
+        ->join('userBusiness',  'submissions.businessId', '=', 'userBusiness.id')
+        ->join('operatorCredentials', 'submissions.reviewedBy', '=', 'operatorCredentials.id')
+        ->join('userCredentials', 'submissions.userId', '=', 'userCredentials.id')
+        ->select('submissions.*', 'userCredentials.fullname as submittedBy', 'locations.locationCode', 'locations.locationLatitude', 'locations.locationLongitude', 'userBusiness.businessName', 'operatorCredentials.fullname')
         ->get();
 
         return view('operators.submissionManagement.index', compact('datas'));

@@ -12,8 +12,8 @@ class PermitManagementController extends Controller
     {
         $datas = DB::table('permits')
         ->join('submissions', 'permits.submissionId', '=', 'submissions.id')
-        ->join('userbusiness',  'submissions.businessId', '=', 'userbusiness.id')
-        ->select('permits.*', 'submissions.id', 'userbusiness.businessName')
+        ->join('userBusiness',  'submissions.businessId', '=', 'userBusiness.id')
+        ->select('permits.*', 'submissions.id', 'userBusiness.businessName')
         ->get();
         return view('operators.permitManagement.index', compact('datas'));
     }

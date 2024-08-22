@@ -41,8 +41,8 @@ class UserAuthController extends Controller
     {
         $request->validate([
             'fullname' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255', 'unique:usercredentials'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:usercredentials'],
+            'username' => ['required', 'string', 'max:255', 'unique:userCredentials'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:userCredentials'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
@@ -54,14 +54,14 @@ class UserAuthController extends Controller
         // ]);
 
         // https://laravel.com/docs/11.x/queries#auto-incrementing-ids
-        $userId = DB::table('usercredentials')->insertGetId([
+        $userId = DB::table('userCredentials')->insertGetId([
             'fullname' => $request->fullname,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        DB::table('userdetails')->insert([
+        DB::table('userDetails')->insert([
             'userId' => $userId,
             'gender' => $request->gender ?? null,
             'address' => $request->address ?? null,
