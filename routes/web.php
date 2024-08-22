@@ -48,7 +48,7 @@ Route::post('/trader/register', [UserAuthController::class, 'registerProcess'])-
 
 Route::view('/home', 'home')->name('home');
 
-Route::middleware(['LoginCheck'])->group(function () {
+Route::middleware(['AuthUser'])->group(function () {
     Route::get('/trader/dashboard', [TraderDashboardController::class, 'index'])->name('trader.dashboard');
     Route::get('/trader/profile', [UserDetailController::class, 'index'])->name('trader.profile');
 
@@ -68,7 +68,7 @@ Route::middleware(['LoginCheck'])->group(function () {
     Route::get('/trader/submission/detail/{id}', [SubmissionController::class, 'detail'])->name('trader.submission.detail');
 });
 
-Route::middleware(['LoginCheck'])->group(function () {
+Route::middleware(['AuthOperator'])->group(function () {
     // Dashboard
     Route::get('/operator/dashboard', [OperatorDashboardController::class, 'index'])->name('trader.dashboard');
     // End Dashboard
