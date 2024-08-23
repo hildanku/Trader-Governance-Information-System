@@ -1,4 +1,4 @@
-@extends('_voler.visitors.master')
+@extends('_voler.layout.master')
 
 @section('content')
 <link href="https://unpkg.com/maplibre-gl@3.x/dist/maplibre-gl.css" rel="stylesheet" />

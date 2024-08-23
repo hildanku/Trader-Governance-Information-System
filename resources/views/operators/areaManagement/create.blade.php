@@ -1,4 +1,4 @@
-@extends('_voler.operators.master')
+@extends('_voler.layout.master')
 
 @section('content')
 

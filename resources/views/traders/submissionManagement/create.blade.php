@@ -1,4 +1,4 @@
-@extends('_voler.traders.master')
+@extends('_voler.layout.master')
 
 @section('content')
 

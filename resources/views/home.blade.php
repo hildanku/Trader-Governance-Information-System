@@ -1,4 +1,4 @@
-@extends('_voler.visitors.master')
+@extends('_voler.layout.master')
 
 @section('content')
 @php
