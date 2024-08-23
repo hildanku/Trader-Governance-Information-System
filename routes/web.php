@@ -70,7 +70,7 @@ Route::middleware(['AuthUser'])->group(function () {
 
 Route::middleware(['AuthOperator'])->group(function () {
     // Dashboard
-    Route::get('/operator/dashboard', [OperatorDashboardController::class, 'index'])->name('trader.dashboard');
+    Route::get('/operator/dashboard', [OperatorDashboardController::class, 'index'])->name('operator.dashboard');
     // End Dashboard
 
     // Areas
