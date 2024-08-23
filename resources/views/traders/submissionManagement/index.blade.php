@@ -1,4 +1,4 @@
-@extends('_voler.traders.master')
+@extends('_voler.operators.master')
 
 @section('content')
 <div class="row" id="basic-table">

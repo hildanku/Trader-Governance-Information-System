@@ -6,6 +6,8 @@
        <!--- <img src="/front/dist/assets/images/logo.svg" alt="" srcset=""> -->
         <a href="/"><h4 style="font-weight: bold">Trade Governance Information System</h4></a>
     </div>
+    {{-- @if(auth()->check() && auth()->user()->hasRole('operator')) --}}
+    @if(Auth::guard('web')->check())
     <div class="sidebar-menu">
         <ul class="menu">
             <li class='sidebar-title'>Main Menu</li>
@@ -47,6 +49,75 @@
             </li>
         </ul>
     </div>
+    @elseif(Auth::guard('userCred')->check())
+    <div class="sidebar-menu">
+        <ul class="menu">
+            <li class='sidebar-title'>Main Menu</li>
+            <li class="sidebar-item active ">
+                <a href="/trader/dashboard" class='sidebar-link'>
+                    <i data-feather="home" width="20"></i> 
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-item  ">
+                <a href="/trader/business" class='sidebar-link'>
+                    <i data-feather="users" width="20"></i> 
+                    <span>Business Management</span>
+                </a>
+            </li>
+            <li class="sidebar-item  ">
+                <a href="/trader/submissions" class='sidebar-link'>
+                    <i data-feather="mail" width="20"></i> 
+                    <span>Submission Management</span>
+                </a>
+            </li>
+            <li class="sidebar-item  ">
+                <a href="/pages/locations" class='sidebar-link'>
+                    <i data-feather="map-pin" width="20"></i> 
+                    <span>Check Availability Location</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    @else
+    <div class="sidebar-menu">
+        <ul class="menu">
+            <li class='sidebar-title'>Menu Utama</li>
+            <li class="sidebar-item active ">
+                <a href="/home" class='sidebar-link'>
+                    <i data-feather="home" width="20"></i> 
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-item  has-sub">
+                <a href="#" class='sidebar-link'>
+                    <i data-feather="users" width="20"></i> 
+                    <span>Account</span>
+                </a>
+                <ul class="submenu ">
+                    <li>
+                        <a href="/trader/register">Registration</a>
+                    </li>
+                    <li>
+                        <a href="/device">Login</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-item  ">
+                <a href="/pages/locations" class='sidebar-link'>
+                    <i data-feather="map-pin" width="20"></i> 
+                    <span>Check location availability</span>
+                </a>
+            </li>
+            <li class="sidebar-item  ">
+                <a href="/pages/about" class='sidebar-link'>
+                    <i data-feather="info" width="20"></i> 
+                    <span>About Us</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    @endif
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
 </div>
         </div>
