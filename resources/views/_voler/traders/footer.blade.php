@@ -6,7 +6,7 @@
             <p>2022 &copy; Template by _voler (Ahmad Saugi)</p>
         </div>
         <div class="float-end">
-            <p>Develop with <span class='text-danger'>😡 + &hearts; </span></i> by <a href="https://hildankutomo.my.id/">Kelompok 2</a></p>
+            <p>Develop with <span class='text-danger'>&hearts; </span></i> by <a href="https://hildankutomo.my.id/">Kelompok 2</a></p>
         </div>
         {{-- <i data-feather="angry"></i> --}}
     </div>
