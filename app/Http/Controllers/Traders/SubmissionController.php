@@ -55,13 +55,13 @@ class SubmissionController extends Controller
             'locationId' => $request->locationId,
             'reviewedBy' => 1,
         ]);
-        return redirect('/trader/submission');
+        return redirect('/trader/submissions');
     }
 
     public function destroy($id)
     {
         DB::table('submissions')->where('id', $id)->delete();
-        return redirect('/trader/submission');
+        return redirect('/trader/submissions');
     }
 
     public function detail($id)
