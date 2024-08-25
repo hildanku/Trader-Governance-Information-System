@@ -135,7 +135,7 @@
                                 <div class="avatar me-1">
                                     <img src="{{ asset ('/_voler/dist/assets/images/avatar/avatar-s-1.png') }}" alt="" srcset="">
                                 </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Hi, Operator!</div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hi, {{ Auth::guard('userCred')->user()->name }}!</div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <div class="dropdown-divider"></div>
