@@ -99,7 +99,7 @@
                         <a href="/trader/register">Registration</a>
                     </li>
                     <li>
-                        <a href="/device">Login</a>
+                        <a href="/trader/login">Login</a>
                     </li>
                 </ul>
             </li>
